@@ -1,19 +1,16 @@
-import sys
-from yahoo_finance_api2 import share
-from yahoo_finance_api2.exceptions import YahooFinanceError
+from Stock import Stock
 
-my_share = share.Share('MSFT')
-symbol_data = None
+if __name__ == '__main__':
+    
+    code = 2158  # FRONTEO
+    p_day = 30
+    p_minute = 5
 
-try:
-    symbol_data = my_share.get_historical(share.PERIOD_TYPE_DAY,
-                                          10,
-                                          share.FREQUENCY_TYPE_MINUTE,
-                                          5)
-except YahooFinanceError as e:
-    print(e.message)
-    sys.exit(1)
-
-print(symbol_data)
+    stock = Stock(code, p_day, p_minute)
+    
+    stock_data = stock.fetch_stock_data()
+    
+    stock.show_graph(stock_data)
 
 
+    
