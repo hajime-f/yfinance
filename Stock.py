@@ -5,10 +5,6 @@ from yahoo_finance_api2.exceptions import YahooFinanceError
 
 class Stock:
 
-    code = None
-    p_day = None
-    p_minute = None
-
     def __init__(self, code, p_day, p_minute):
 
         self.code = code
